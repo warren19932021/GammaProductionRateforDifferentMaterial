@@ -1131,7 +1131,7 @@
 /detector/FrontThickness 5
 /run/printProgress 1000
 /run/reinitializeGeometry
-/run/beamOn 10000
+/run/beamOn 16000
 
 
 #/detector/FrontThickness 6

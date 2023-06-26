@@ -123,24 +123,35 @@ if(postStepProcessName=="muMinusCaptureAtRest")
                         G4String LogicalVolumeName = track->GetLogicalVolumeAtVertex()->GetName();
                       if(LogicalVolumeName.compare("logical_Te_target")==0)
                       {
+       
+       
+                         std::ifstream readFlagForRealSignal("FlagForRealSignal.txt");
+                         G4int FlagForRealSignalValue;
+                         //if(readFlagForRealSignal)
+                         //{
+                           readFlagForRealSignal >> FlagForRealSignalValue;
+                           G4cout<<"FlagForRealSignalValue: "<<FlagForRealSignalValue<<G4endl;     
+                         //}
+       
                         //   G4cout<<"trackingAction->GetFlagForRealSignal(): "<<trackingAction->GetFlagForRealSignal()<<G4endl;
+                        if (FlagForRealSignalValue == 1)
                        // if (trackingAction->GetFlagForRealSignal() ==1)
-                       //  {  
+                         {  
                         
-                        //     G4cout<<"\nCaptured! step in MySensitiveDetector--------------------"
-                        //     <<"\npreStep: "<<std::setw(6) << G4BestUnit(preStep,"Length")
-                        //     <<"\npostStep: "<<std::setw(6) << G4BestUnit(postStep,"Length")
-                        //     <<"\npostStep Z position: "<<std::setw(6) << G4BestUnit(postStep.getZ() ,"Length") 
-                        //     <<"\npreStepPointLogicalVolumeName: "<<std::setw(6) << preStepPointVolumeName 
-                        //     <<"\nProcessName: "<<std::setw(6) << ProcessName
-                        //     <<"\npostStepPointLogicalVolumeName: "<<std::setw(6) << postStepPointVolumeName 
-                        //     <<"\nTrack name: "<<std::setw(6)<<track->GetDefinition()->GetParticleName()
-                        //     <<"\ntrack->GetTotalEnergy(): "<< G4BestUnit(track->GetTotalEnergy() ,"Energy") 
-                        //     <<"\npostStepPoint->GetTotalEnergy(): "<< G4BestUnit(postStepPoint->GetTotalEnergy() ,"Energy") 
-                        //     <<"\ntrack->GetVertexPosition(): "<<G4BestUnit(track->GetVertexPosition() ,"Length") 
-                        //     <<"\ntrack->GetPosition(): "<<G4BestUnit(track->GetPosition() ,"Length") 
-                        //     <<"\n"
-                        //     << G4endl;
+                             G4cout<<"\nCaptured! step in MySensitiveDetector--------------------"
+                             <<"\npreStep: "<<std::setw(6) << G4BestUnit(preStep,"Length")
+                             <<"\npostStep: "<<std::setw(6) << G4BestUnit(postStep,"Length")
+                             <<"\npostStep Z position: "<<std::setw(6) << G4BestUnit(postStep.getZ() ,"Length") 
+                             <<"\npreStepPointLogicalVolumeName: "<<std::setw(6) << preStepPointVolumeName 
+                             <<"\nProcessName: "<<std::setw(6) << ProcessName
+                             <<"\npostStepPointLogicalVolumeName: "<<std::setw(6) << postStepPointVolumeName 
+                             <<"\nTrack name: "<<std::setw(6)<<track->GetDefinition()->GetParticleName()
+                             <<"\ntrack->GetTotalEnergy(): "<< G4BestUnit(track->GetTotalEnergy() ,"Energy") 
+                             <<"\npostStepPoint->GetTotalEnergy(): "<< G4BestUnit(postStepPoint->GetTotalEnergy() ,"Energy") 
+                             <<"\ntrack->GetVertexPosition(): "<<G4BestUnit(track->GetVertexPosition() ,"Length") 
+                             <<"\ntrack->GetPosition(): "<<G4BestUnit(track->GetPosition() ,"Length") 
+                             <<"\n"
+                             << G4endl;
 
 
            // fill ntuple and histogram
@@ -207,7 +218,7 @@ if(postStepProcessName=="muMinusCaptureAtRest")
          //        analysisManager->FillNtupleDColumn(1, 4,theta);      
          //        analysisManager->FillNtupleIColumn(1, 5,flag);      
          //        analysisManager->AddNtupleRow(1);
-                 //}
+                 }
                }            
              }
             

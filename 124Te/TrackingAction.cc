@@ -108,6 +108,8 @@ void MyTrackingAction::PreUserTrackingAction(const G4Track* aTrack )
 void MyTrackingAction::PostUserTrackingAction(const G4Track* track)
 {
 
+   std::ofstream myfile("FlagForRealSignal.txt");
+
     
 //    G4cout<<"\nNow PostUserTrackingAction start to run: "<<G4endl;
 
@@ -164,7 +166,7 @@ void MyTrackingAction::PostUserTrackingAction(const G4Track* track)
                  auto secondaryID = secstep->GetTrackID();
                  auto secEkin = G4BestUnit(secstep->GetKineticEnergy(), "Energy");
 
-         //        G4cout<<"nSecondaries: "<<nSecondaries<<G4endl;
+                 G4cout<<"nSecondaries: "<<nSecondaries<<G4endl;
                 // G4cout<<"Contains Sb124!!!"<<G4endl;
                 /* 
                  if (secondaryName.compare("e-")==0||
@@ -174,15 +176,15 @@ void MyTrackingAction::PostUserTrackingAction(const G4Track* track)
                 */
                  if (secondaryName.compare("gamma")==0)
                  {
-         //        G4cout<<"secondaryName: "<<secondaryName
-         //        //<<"; secondaryID: "<<secondaryID
-         //        //<<"; Parent ID: "<<secstep->GetParentID()
-         //        //<<"; trackID: "<<track->GetTrackID()
-         //        //<<"; TrackParentID: "<<track->GetParentID()
-         //        <<"; secEkin: "<<secEkin
-         //        <<"; secstep->GetTotalEnergy(): "<<G4BestUnit(secstep->GetTotalEnergy(), "Energy")
-         //        <<"; secstep->GetPosition(): "<< G4BestUnit(secstep->GetPosition(), "Length")         
-         //        <<G4endl;
+                   G4cout<<"secondaryName: "<<secondaryName
+                   //<<"; secondaryID: "<<secondaryID
+                   //<<"; Parent ID: "<<secstep->GetParentID()
+                   //<<"; trackID: "<<track->GetTrackID()
+                   //<<"; TrackParentID: "<<track->GetParentID()
+                   <<"; secEkin: "<<secEkin
+                   <<"; secstep->GetTotalEnergy(): "<<G4BestUnit(secstep->GetTotalEnergy(), "Energy")
+                   <<"; secstep->GetPosition(): "<< G4BestUnit(secstep->GetPosition(), "Length")         
+                   <<G4endl;
 
 
                  analysisManager->FillNtupleDColumn(10, 0,secstep->GetTotalEnergy() / MeV);    
@@ -298,7 +300,8 @@ void MyTrackingAction::PostUserTrackingAction(const G4Track* track)
     //}
             
 //G4cout<<"FlagForRealSignal in the end of TrackingAction: "<<FlagForRealSignal<<G4endl;
-
+   myfile <<GetFlagForRealSignal()<<G4endl;
+   myfile.close(); 
 
 }
 
