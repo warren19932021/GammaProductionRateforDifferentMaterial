@@ -1,0 +1,4 @@
+/home/iktp/Geant4-Work/NewStart/GammaProductionRateforDifferentMaterial/124Te/build/CMakeFiles/rebuild_cache.dir
+/home/iktp/Geant4-Work/NewStart/GammaProductionRateforDifferentMaterial/124Te/build/CMakeFiles/Simulation.dir
+/home/iktp/Geant4-Work/NewStart/GammaProductionRateforDifferentMaterial/124Te/build/CMakeFiles/edit_cache.dir
+/home/iktp/Geant4-Work/NewStart/GammaProductionRateforDifferentMaterial/124Te/build/CMakeFiles/sim.dir
